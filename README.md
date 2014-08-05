@@ -1,4 +1,4 @@
-marvin-users
-============
+Marvin - Users plugin
+=====================
 
-Micro CMS based on Silex framework - Users plugin
+Users plugin for [Marvin - micro CMS](https://github.com/orthes/marvin-core).
