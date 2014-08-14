@@ -18,5 +18,11 @@
         "psr-4": {
             "Marvin\\Users\\": ""
         }
+    },
+    "minimum-stability": "dev",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.0-dev"
+        }
     }
 }
