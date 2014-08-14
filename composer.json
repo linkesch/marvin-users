@@ -1,7 +1,6 @@
 {
     "name": "marvin/users",
     "description": "Users plugin for Marvin - PHP micro CMS based on Silex framework",
-    "version": "0.0.2",
     "homepage": "http://github.com/orthes/marvin-users",
     "license": "MIT",
     "authors": [
@@ -12,7 +11,7 @@
         }
     ],
     "require": {
-        "marvin/marvin": "~0.0.3"
+        "marvin/marvin": "0.0.x-dev"
     },
     "autoload": {
         "psr-4": {
