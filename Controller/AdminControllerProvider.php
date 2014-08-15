@@ -56,7 +56,7 @@ class AdminControllerProvider implements ControllerProviderInterface
                     $find = $app['db']->fetchAssoc("SELECT COUNT(*) AS count FROM user WHERE username = ?", array($data['username']));
                     if($find['count'])
                     {
-                        $app['session']->getFlashBag()->add('error', 'A user with this username already exists. Please try another one.');
+                        $app['session']->getFlashBag()->add('error', $app['translator']->trans('A user with this username already exists. Please try another one.'));
                     }
                     else
                     {
@@ -67,7 +67,7 @@ class AdminControllerProvider implements ControllerProviderInterface
                             date('Y-m-d H:i:s'),
                         ));
 
-                        $app['session']->getFlashBag()->add('message', 'The new user was added');
+                        $app['session']->getFlashBag()->add('message', $app['translator']->trans('The new user was added'));
                         return $app->redirect('/admin/users');
                     }
                 }
@@ -76,7 +76,7 @@ class AdminControllerProvider implements ControllerProviderInterface
                     $find = $app['db']->fetchAssoc("SELECT COUNT(*) AS count FROM user WHERE username = ? AND id != ?", array($data['username'], $data['id']));
                     if($find['count'])
                     {
-                        $app['session']->getFlashBag()->add('error', 'A user with this username already exists. Please try another one.');
+                        $app['session']->getFlashBag()->add('error', $app['translator']->trans('A user with this username already exists. Please try another one.'));
                     }
                     else
                     {
@@ -89,7 +89,7 @@ class AdminControllerProvider implements ControllerProviderInterface
                             $data['id'],
                         ));
 
-                        $app['session']->getFlashBag()->add('message', 'The user was changed');
+                        $app['session']->getFlashBag()->add('message', $app['translator']->trans('The user was changed'));
                         return $app->redirect('/admin/users');
                     }
                 }
@@ -104,7 +104,7 @@ class AdminControllerProvider implements ControllerProviderInterface
         $controllers->get('/delete/{id}', function ($id) use ($app) {
             $app['db']->delete('user', array('id' => $id));
 
-            $app['session']->getFlashBag()->add('message', 'The user was deleted');
+            $app['session']->getFlashBag()->add('message', $app['translator']->trans('The user was deleted'));
             return $app->redirect('/admin/users');
         });
 

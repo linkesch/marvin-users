@@ -2,7 +2,7 @@
 
 {% block content %}
     <header class="page-header">
-        <h1>Users</h1>
+        <h1>{{ 'Users'|trans }}</h1>
     </header>
 
     {% for message in app.session.getFlashBag.get('message') %}
@@ -10,13 +10,13 @@
     {% endfor %}
 
     <p><a href="/admin/users/form" class="btn btn-primary">New user</a></p>
-    <p>Number of users: {{ users|length }}</p>
+    <p>{{ 'Number of users'|trans }}: {{ users|length }}</p>
     <br>
 
     <table id="users" class="table table-striped">
         <thead>
             <tr>
-                <th>Username</th>
+                <th>{{ 'Username'|trans }}</th>
                 <th width="15%"></th>
             </tr>
         </thead>
@@ -25,13 +25,13 @@
                 <tr>
                     <td>{{ user.username }}</td>
                     <td>
-                        <a href="/admin/users/form/{{ user.id }}" class="btn btn-primary">Edit</a>
-                        <a href="/admin/users/delete/{{ user.id }}" class="btn btn-danger confirm">Delete</a>
+                        <a href="/admin/users/form/{{ user.id }}" class="btn btn-primary">{{ 'Edit'|trans }}</a>
+                        <a href="/admin/users/delete/{{ user.id }}" class="btn btn-danger confirm">{{ 'Delete'|trans }}</a>
                     </td>
                 </tr>
             {% else %}
                 <tr>
-                    <td colspan="4">There are no users. <a href="/admin/users/form">Create the first one now.</a></td>
+                    <td colspan="4">{{ 'There are no users.'|trans }} <a href="/admin/users/form">{{ 'Create the first one now.'|trans }}</a></td>
                 </tr>
             {% endfor %}
         </tbody>
