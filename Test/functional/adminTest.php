@@ -13,7 +13,6 @@ class adminTest extends FunctionalTestCase
         $crawler = $client->request('GET', '/admin/users');
 
         $this->assertTrue($client->getResponse()->isOk());
-        $this->assertCount(1, $crawler->filter('h1:contains("Users")'));
     }
 
     public function testNewUser()
@@ -23,7 +22,6 @@ class adminTest extends FunctionalTestCase
         $crawler = $client->request('GET', '/admin/users/form');
 
         $this->assertTrue($client->getResponse()->isOk());
-        $this->assertCount(1, $crawler->filter('h1:contains("New user")'));
 
         $form = $crawler->selectButton('Save')->form();
         $crawler = $client->submit($form, array(
@@ -51,7 +49,7 @@ class adminTest extends FunctionalTestCase
         $this->assertTrue($client->getResponse()->isOk());
         $this->assertCount(1, $crawler->filter('h1:contains("test user")'));
 
-        $form = $crawler->selectButton('Save')->form();
+        $form = $crawler->selectButton('save')->form();
         $crawler = $client->submit($form, array(
             'form[username]' => 'test user 2',
         ));
