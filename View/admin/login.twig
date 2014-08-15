@@ -10,7 +10,7 @@
 
             <form action="{{ path('admin_login_check') }}" method="post" role="form">
                 {% if error %}
-                    <div class="alert alert-danger">{{ error }}</div>
+                    <div class="alert alert-danger">{{ error|trans }}</div>
                 {% endif %}
                 <div class="form-group">
                     <label for="_username">{{ 'Username'|trans }}</label>
