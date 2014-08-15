@@ -9,7 +9,7 @@
         <div class="alert alert-success">{{ message }}</div>
     {% endfor %}
 
-    <p><a href="/admin/users/form" class="btn btn-primary">New user</a></p>
+    <p><a href="/admin/users/form" class="btn btn-primary">{{ 'New user'|trans }}</a></p>
     <p>{{ 'Number of users'|trans }}: {{ users|length }}</p>
     <br>
 
