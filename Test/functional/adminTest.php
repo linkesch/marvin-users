@@ -1,8 +1,6 @@
 <?php
 
 use Marvin\Marvin\Test\FunctionalTestCase;
-use Symfony\Component\BrowserKit\Cookie;
-use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
 class adminTest extends FunctionalTestCase
 {

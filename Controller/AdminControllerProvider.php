@@ -8,7 +8,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\User\User;
 use Symfony\Component\Validator\Constraints as Assert;
 
-
 class AdminControllerProvider implements ControllerProviderInterface
 {
     public function connect(Application $app)
@@ -27,8 +26,7 @@ class AdminControllerProvider implements ControllerProviderInterface
         $controllers->match('/form/{id}', function (Request $request, $id) use ($app) {
             $userData = array();
 
-            if($id > 0)
-            {
+            if ($id > 0) {
                 $userData = $app['db']->fetchAssoc("SELECT * FROM user WHERE id = ?", array($id));
                 $userData['password'] = '';
             }
@@ -46,20 +44,15 @@ class AdminControllerProvider implements ControllerProviderInterface
 
             $form->handleRequest($request);
 
-            if($form->isValid())
-            {
+            if ($form->isValid()) {
                 $data = $form->getData();
                 $encoder = $app['security.encoder_factory']->getEncoder(new User($data['username'], $data['password']));
 
-                if($data['id'] == 0)
-                {
+                if ($data['id'] == 0) {
                     $find = $app['db']->fetchAssoc("SELECT COUNT(*) AS count FROM user WHERE username = ?", array($data['username']));
-                    if($find['count'])
-                    {
+                    if ($find['count']) {
                         $app['session']->getFlashBag()->add('error', $app['translator']->trans('A user with this username already exists. Please try another one.'));
-                    }
-                    else
-                    {
+                    } else {
                         $app['db']->executeUpdate("INSERT INTO user (username, password, created_at, updated_at) VALUES (?, ?, ?, ?)", array(
                             $data['username'],
                             $encoder->encodePassword($data['password'], null),
@@ -68,18 +61,14 @@ class AdminControllerProvider implements ControllerProviderInterface
                         ));
 
                         $app['session']->getFlashBag()->add('message', $app['translator']->trans('The new user was added'));
+
                         return $app->redirect('/admin/users');
                     }
-                }
-                else
-                {
+                } else {
                     $find = $app['db']->fetchAssoc("SELECT COUNT(*) AS count FROM user WHERE username = ? AND id != ?", array($data['username'], $data['id']));
-                    if($find['count'])
-                    {
+                    if ($find['count']) {
                         $app['session']->getFlashBag()->add('error', $app['translator']->trans('A user with this username already exists. Please try another one.'));
-                    }
-                    else
-                    {
+                    } else {
                         $originalUserData = $app['db']->fetchAssoc("SELECT * FROM user WHERE id = ?", array($data['id']));
 
                         $app['db']->executeUpdate("UPDATE user SET username = ?, password = ?, updated_at = ? WHERE id = ?", array(
@@ -90,6 +79,7 @@ class AdminControllerProvider implements ControllerProviderInterface
                         ));
 
                         $app['session']->getFlashBag()->add('message', $app['translator']->trans('The user was changed'));
+
                         return $app->redirect('/admin/users');
                     }
                 }
@@ -105,6 +95,7 @@ class AdminControllerProvider implements ControllerProviderInterface
             $app['db']->delete('user', array('id' => $id));
 
             $app['session']->getFlashBag()->add('message', $app['translator']->trans('The user was deleted'));
+
             return $app->redirect('/admin/users');
         });
 
