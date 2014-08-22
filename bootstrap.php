@@ -30,3 +30,6 @@ $app->register(new Marvin\Users\Provider\InstallServiceProvider());
 // Mount plugin controller provider
 $app->mount('/login', new Marvin\Users\Controller\LoginControllerProvider());
 $app->mount('/admin/users', new Marvin\Users\Controller\AdminControllerProvider());
+if ($app['debug']) {
+    $app->mount('/install/users', new Marvin\Users\Controller\InstallControllerProvider());
+}
