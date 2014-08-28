@@ -23,9 +23,6 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
 ));
 $app->register(new Marvin\Users\Provider\InstallServiceProvider());
 
-// Require plugin middlewares
-//require __DIR__ .'/middlewares.php';
-
 
 // Mount plugin controller provider
 $app->mount('/login', new Marvin\Users\Controller\LoginControllerProvider());
