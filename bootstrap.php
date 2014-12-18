@@ -21,6 +21,11 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
         ),
     ),
 ));
+
+$app->register(new Silex\Provider\SwiftmailerServiceProvider(), array(
+    'swiftmailer.options' => isset($app['config']['swiftmailer.options']) ? $app['config']['swiftmailer.options'] : array(),
+));
+
 $app->register(new Marvin\Users\Provider\InstallServiceProvider());
 
 

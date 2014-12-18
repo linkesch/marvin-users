@@ -36,7 +36,7 @@ class InstallServiceProvider implements ServiceProviderInterface
 
                     // Create admin user
                     $app['db']->executeUpdate("INSERT INTO user (username, password, created_at, updated_at) VALUES (?, ?, ?, ?)", array(
-                        'admin',
+                        'admin@test.com',
                         '5FZ2Z8QIkA7UTZ4BYkoC+GsReLf569mSKDsfods6LYQ8t+a8EW9oaircfMpmaLbPBh4FOBiiFyLfuZmTSUwzZg==', // foo
                         date('Y-m-d H:i:s'),
                         date('Y-m-d H:i:s'),

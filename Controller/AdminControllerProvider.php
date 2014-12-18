@@ -34,6 +34,7 @@ class AdminControllerProvider implements ControllerProviderInterface
             $form = $app['form.factory']->createBuilder('form', $userData)
                 ->add('id', 'hidden')
                 ->add('username', 'text', array(
+                    'label' => 'E-mail',
                     'constraints' => array(new Assert\NotBlank(), new Assert\Length(array('min' => 4))),
                 ))
                 ->add('password', 'text', array(

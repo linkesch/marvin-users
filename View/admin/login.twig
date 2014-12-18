@@ -13,12 +13,15 @@
                     <div class="alert alert-danger">{{ error|trans }}</div>
                 {% endif %}
                 <div class="form-group">
-                    <label for="_username">{{ 'Username'|trans }}</label>
-                    <input type="text" class="form-control" name="_username" id="_username" placeholder="{{ 'Username'|trans }}" value="{{ last_username }}">
+                    <label for="_username">{{ 'E-mail'|trans }}</label>
+                    <input type="text" class="form-control" name="_username" id="_username" placeholder="{{ 'E-mail'|trans }}" value="{{ last_username }}">
                 </div>
                 <div class="form-group">
                     <label for="_password">{{ 'Password'|trans }}</label>
                     <input type="password" class="form-control" name="_password" id="_password" placeholder="{{ 'Password'|trans }}">
+                </div>
+                <div class="text-right">
+                    <a href="{{ path('admin_forgotten_password') }}">{{ 'Forgotten password?'|trans }}</a>
                 </div>
                 <button type="submit" class="btn btn-default" id="login">{{ 'Sign in'|trans }}</button>
             </form>
