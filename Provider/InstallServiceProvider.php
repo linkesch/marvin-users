@@ -42,7 +42,7 @@ class InstallServiceProvider implements ServiceProviderInterface
                         date('Y-m-d H:i:s'),
                     ));
 
-                    $admin = $app['db']->fetchAssoc("SELECT COUNT(*) AS count FROM user WHERE username = 'admin'");
+                    $admin = $app['db']->fetchAssoc("SELECT COUNT(*) AS count FROM user WHERE username = 'admin@test.com'");
                     $messages[] = $app['install_status'](
                         $admin['count'],
                         'User "admin" was created.',
