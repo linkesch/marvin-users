@@ -12,12 +12,18 @@
         }
     ],
     "require": {
-        "marvin/marvin": ">=0.1.4,<2.0",
+        "marvin/marvin": "0.1.*@dev",
         "swiftmailer/swiftmailer": ">=4.1.2,<4.2-dev"
     },
     "autoload": {
         "psr-4": {
             "Marvin\\Users\\": ""
         }
-    }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.2.x-dev"
+        }
+    },
+    "minimum-stability": "dev"
 }
